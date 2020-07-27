@@ -12,18 +12,57 @@
 </head>
 <body>
     <header>
-        <div class="container" id="start">
-            <div class="row justify-content-center">
-                <div class="col-10">
-                    <h1>Coding Quiz!</h1>
-                    <p>
-                        Answer the code related questions in 60 seconds or less. Every time you answer incorrectly, you will lose 5 seconds from the timer.
-                        Once time runs out or you've answered all the questions, add your initials to the high score hall of fame!
-                    </p>
-                </div>
+        <nav class="nav">
+            <a class="nav-link active" href="highscores.html">View High Scores</a>
+          </nav>
+    </header>
+
+    <!-- Home -->
+    <div class="container" id="home">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <h1>Coding Quiz!</h1>
+                <p>
+                    Answer the code related questions in 60 seconds or less. Every time you answer incorrectly, you will lose 5 seconds from the timer.
+                    Once time runs out or you've answered all the questions, add your initials to the high score hall of fame!
+                </p>
+                <button type="button" class="btn btn-info btn-sm submitBtn">Start</button>
             </div>
         </div>
-    </header>
+    </div>
+
+    <!-- Q/A -->
+    <div class="container" id="quiz">
+        <div class="row justify-content-center">
+            <div class="col-10" id="quiz-block">
+                <h3 id="questions">QUESTION</h3>
+                <ul id="answers" class="listUnstyled">
+                    <li class="answerChoice">A</li>
+                    <li class="answerChoice">B</li>
+                    <li class="answerChoice">C</li>
+                    <li class="answerChoice">D</li>
+                </ul>
+                <p class="feedback"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Finish -->
+    <div class="container" id="addScore">
+        <div class="row justify-content-center">
+            <div class="col-10" id="quiz-block">
+                <h2>Finished!</h2>
+                <p id="user-score"></p>
+                <form class="form-group">
+                    <label for="new-score">Add your initials:</label>
+                    <input type="text" id="userInitials">
+                    <button type="button" class="btn btn-info btn-sm submitBtn">Submit your score</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
     <script src='script.js'></script> 
 </body>
 </html>
