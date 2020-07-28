@@ -7,7 +7,49 @@ var userScoreEL = document.getElementById("user-score");
 var userNameInput;
 var questionHeader = document.getElementById("questions");
 var answerChoices = document.getElementById("answers");
+let questions = [
+    {
+    question: "In what HTML element do you put JavaScript?",
+    choice1: "<javascript>",
+    choice2: ",js>",
+    choice3: "<script",
+    choice4: "<java>",
 
+    answer: 3
+    },
+    {
+    question: "What is the correct syntax for referring to an external script?",
+    choice1: "<script href=''>",
+    choice2: "<script src=''>",
+    choice3: "<script name=''>",
+    choice4: "<script call=''>",
+
+    answer: 2
+    },
+    {
+    question: "What is the definition of an array?",
+    choice1: "Variable that can hold more than one value at a time",
+    choice2: "Zero or more characters written inside quotes",
+    choice3: "Any integer with no quotation marks",
+    choice4: "None of the above",
+
+    answer: 1
+    },
+    {
+    question: "Which of the following is not a function?",
+    choice1: "Grow",
+    choice2: "Alert",
+    choice3: "Prompt",
+    choice4: "Confirm",
+    
+    answer: 1
+    
+    },
+    {
+    question: "What is the purpose of console.log?",
+    choice1: ""
+    }
+]
 var questionNumber = -1;
 var answer;
 
