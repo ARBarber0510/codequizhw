@@ -1,3 +1,7 @@
 * {
     box-sizing: border-box;
 }
+
+.timer {
+    float: right;
+}

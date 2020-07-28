@@ -1,5 +1,3 @@
-var startBtn = document.getElementById("startBtn");
-var submitBtn = document.getElementById("submitBtn");
 var startBtn = document.querySelector("#startBtn");
 let questions = [
     {
@@ -76,49 +74,40 @@ let questions = [
     }
 
 ]
-var secondsDisplay = document.querySelector("seconds");
-var timerEl = document.getElementById("timer");
+var secondsDisplay = document.querySelector("#seconds");
+var timerEl = document.querySelector(".timer");
 var addScoreEl = document.querySelector("#add-score");
 var userScoreEL = document.getElementById("user-score");
 var userNameInput;
 var questionHeader = document.getElementById("questions");
 var answerChoices = document.getElementById("answers");
+var submitBtn = document.getElementById("submitBtn");
 
-var totalSeconds = 60;
+var secondsLeft = 60;
 var secondsElapsed = 0;
-var status = "Working";
 var interval;
 
-// Question and answer portion.
 var questionNumber = -1;
 var answer;
 
 
-getTimePreferences ();
+// getTimePreferences ();
 
 function getFormattedSeconds() {
     var secondsLeft = (totalSeconds - secondsElapsed) % 60;
-
+  
     var formattedSeconds;
+  
+    if (secondsLeft < 10) {
+      formattedSeconds = "0" + secondsLeft;
+    } else {
+      formattedSeconds = secondsLeft;
+    }
+  
+    return formattedSeconds;
+  }
 
-    if (minutesLeft < 10) {
-        formattedMinutes = "0" + minutesLeft;
-      } else {
-        formattedMinutes = minutesLeft;
-      }
-    
-      return formattedMinutes;
-}
-
-function startTimer () {
-    document.getElementById("home");
-    document.getElementById("quiz");
-
-    setTimer();
-
-    makeQuestions();
-}
-function setTimer () {
+  function setTime () {
     var countdown = setInterval(function() {
         secondsLeft--;
         timerEl.textContent = "Time: " + secondsLeft;
@@ -128,6 +117,13 @@ function setTimer () {
             setTimeout(displayScore, 500);
         }
     }, 1000);
+}
+
+function startTimer () {
+    document.getElementById("home");
+    document.getElementById("quiz");
+
+    setTime ();
 }
 
 function makeQuestions() {
