@@ -1,14 +1,6 @@
-var startBtn = document.getElementsById("startBtn");
-var submitBtn = document.getElementsById("submitBtn");
-var secondsLeft = (questions.length * 120 + 1);
-var timerEl = document.getElementById("timer");
-var addScoreEl = document.querySelector("#add-score");
-var userScoreEL = document.getElementById("user-score");
-var userNameInput;
-var questionHeader = document.getElementById("questions");
-var answerChoices = document.getElementById("answers");
-
-// Question and answer portion.
+var startBtn = document.getElementById("startBtn");
+var submitBtn = document.getElementById("submitBtn");
+var startBtn = document.querySelector("#startBtn");
 let questions = [
     {
     question: "In what HTML element do you put JavaScript?",
@@ -84,9 +76,39 @@ let questions = [
     }
 
 ]
+var secondsDisplay = document.querySelector("seconds");
+var timerEl = document.getElementById("timer");
+var addScoreEl = document.querySelector("#add-score");
+var userScoreEL = document.getElementById("user-score");
+var userNameInput;
+var questionHeader = document.getElementById("questions");
+var answerChoices = document.getElementById("answers");
+
+var totalSeconds = 60;
+var secondsElapsed = 0;
+var status = "Working";
+var interval;
+
+// Question and answer portion.
 var questionNumber = -1;
 var answer;
 
+
+getTimePreferences ();
+
+function getFormattedSeconds() {
+    var secondsLeft = (totalSeconds - secondsElapsed) % 60;
+
+    var formattedSeconds;
+
+    if (minutesLeft < 10) {
+        formattedMinutes = "0" + minutesLeft;
+      } else {
+        formattedMinutes = minutesLeft;
+      }
+    
+      return formattedMinutes;
+}
 
 function startTimer () {
     document.getElementById("home");
