@@ -63,9 +63,9 @@ let questions = [
         choices: ["msgBox('Hello!')",
          "msg('Hello!')",
          "alertBox('Hello!')",
-         "aler('Hello!')"],
+         "alert('Hello!')"],
 
-        answer: "aler('Hello!')"
+        answer: "alert('Hello!')"
     }
 
 ]
@@ -81,37 +81,18 @@ var restartBtn = document.querySelector("#restartBtn");
 var clearBtn = document.querySelector("#clearBtn");
 
 var secondsLeft = 60;
-var secondsElapsed = 0;
 var interval;
 
 var questionNumber = 0;
 
-
-// Need help here.
-// getTimePreferences ();
-
-function getFormattedSeconds() {
-    var secondsLeft = (totalSeconds - secondsElapsed) % 60;
-
-    var formattedSeconds;
-
-    if (secondsLeft < 10) {
-        formattedSeconds = "0" + secondsLeft;
-    } else {
-        formattedSeconds = secondsLeft;
-    }
-
-    return formattedSeconds;
-}
-
-function setTime() {
-    var countdown = setInterval(function () {
+function setTimer() {
+    var timerInterval = setInterval(function(){
         secondsLeft--;
         timerEl.textContent = "Time: " + secondsLeft;
 
-        if (secondsLeft === 0 || questionNumber === 0) {
-            clearInterval(countdown);
-            setTimeout(displayScore, 500);
+        if (secondsLeft === 0) {
+        clearInterval(timerInterval);
+        setTimeout(displayScore, 500);
         }
     }, 1000);
 }
@@ -120,8 +101,8 @@ function startTimer() {
     document.getElementById("home").classList.add("d-none");
     document.getElementById("quiz").classList.remove("d-none");
 
-    setTime();
-    // Here's where I'm having an issue.
+    setTimer();
+    
     makeQuestions();
 }
 
