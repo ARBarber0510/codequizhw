@@ -120,10 +120,12 @@ function getFormattedSeconds() {
 }
 
 function startTimer () {
-    document.getElementById("home");
-    document.getElementById("quiz");
+    document.getElementById("home").classList.add("d-none");
+    document.getElementById("quiz").classList.remove("d-none");
 
     setTime ();
+// Here's where I'm having an issue.
+    makeQuestions();
 }
 
 function makeQuestions() {
@@ -133,19 +135,19 @@ function makeQuestions() {
     questionHeader.textContent = questions[questionNumber].title;
     answerChoices.innerHTML = "";
 
-    var choices = questions[questionsNumber].choices;
+    var choices = questions[questionNumber].choices;
 
     for (var i = 0; i < choices.length; i++) {
         var nextChoice = document.createElement("button");
 
         nextChoice.textContent = choices[i]
-        answerBtn = answerChoices.appendChild(nextChoice).setAttribute("class", );
+        answerBtn = answerChoices.appendChild(nextChoice).setAttribute("class");
     }
 }
 
 function displayScore() {
-    document.getElementById("quiz");
-    document.getElementById("submitBtn");
+    document.getElementById("quiz").classList.add("d-none");
+    document.getElementById("submitBtn").classList.remove("d-none");
     userScoreEL.textContent = "FINAL SCORE: " + secondsLeft + ".";
 }
 
@@ -196,4 +198,3 @@ answerChoices.addEventListener("click", function (event) {
         }
         makeQuestions();
 });
-
