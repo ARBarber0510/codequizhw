@@ -7,6 +7,7 @@ var userScoreEL = document.getElementById("user-score");
 var userNameInput;
 var questionHeader = document.getElementById("questions");
 var answerChoices = document.getElementById("answers");
+
 let questions = [
     {
     question: "In what HTML element do you put JavaScript?",
@@ -46,9 +47,37 @@ let questions = [
     
     },
     {
-    question: "What is the purpose of console.log?",
-    choice1: ""
+    question: "Which of the following is a type of loop?",
+    choice1: "for",
+    choice2: "while",
+    choice3: "for/of",
+    choice4: "All of the above",
+
+    answer: 4
+    },
+    {
+    question: "What does API stand for?",
+    choice1: "Application Program Integration",
+    choice2: "Application Programing Interface",
+    choice3: "Apply Programs Inside",
+    choice4: "Apple Programs Integrator",
+
+    answer: 2
+    },
+    {
+    question: "Which of the following is not one of the fundamental programming languages?",
+    choice1: "HTML",
+    choice2: "CSS",
+    choice3: "Python",
+    choice4: "JavaScript",
+
+    answer: 3
+    },
+    {
+    question: "What is console.log mainly used for?",
+    choice1: "To help",
     }
+
 ]
 var questionNumber = -1;
 var answer;
