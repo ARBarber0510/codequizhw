@@ -1,76 +1,71 @@
 var startBtn = document.querySelector("#startBtn");
 let questions = [
     {
-    question: "In what HTML element do you put JavaScript?",
-    choice1: "<javascript>",
-    choice2: ",js>",
-    choice3: "<script",
-    choice4: "<java>",
+        question: "In what HTML element do you put JavaScript?",
+        choices: ["<javascript>", "<js>", "<script>", "<java>"],
 
-    answer: 3
+
+        answer: "<script>"
     },
     {
-    question: "What is the correct syntax for referring to an external script?",
-    choice1: "<script href=''>",
-    choice2: "<script src=''>",
-    choice3: "<script name=''>",
-    choice4: "<script file=''>",
+        question: "What is the correct syntax for referring to an external script?",
+        choices: ["<script href=''>", "<script src=''>", "<script name=''>", "<script file=''>"],
 
-    answer: 2
+        answer: "<script src=''>"
     },
     {
-    question: "What is the definition of an array?",
-    choice1: "Variable that can hold more than one value at a time",
-    choice2: "Zero or more characters written inside quotes",
-    choice3: "Any integer with no quotation marks",
-    choice4: "None of the above",
+        question: "What is the definition of an array?",
+        choices: ["Variable that can hold more than one value at a time",
+            "Zero or more characters written inside quotes",
+            "Any integer with no quotation marks",
+            "None of the above"],
 
-    answer: 1
+        answer: "Variable that can hold more than one value at a time"
     },
     {
-    question: "Which of the following is not a function?",
-    choice1: "Grow",
-    choice2: "Alert",
-    choice3: "Prompt",
-    choice4: "Confirm",
-    
-    answer: 1
+        question: "Which of the following is not a function?",
+        choices: ["Grow",
+            "Alert",
+            "Prompt",
+            "Confirm"]
+        ,
+        answer: "Grow"
     },
     {
-    question: "Which of the following is a type of loop?",
-    choice1: "for",
-    choice2: "while",
-    choice3: "for/of",
-    choice4: "All of the above",
+        question: "Which of the following is a type of loop?",
+        choices: ["for",
+        "while",
+        "for/of",
+        "All of the above"],
 
-    answer: 4
+        answer: "All of the above"
     },
     {
-    question: "What does API stand for?",
-    choice1: "Application Program Integration",
-    choice2: "Application Programing Interface",
-    choice3: "Apply Programs Inside",
-    choice4: "Apple Programs Integrator",
+        question: "What does API stand for?",
+        choices: ["Application Program Integration",
+        "Application Programing Interface",
+        "Apply Programs Inside",
+        "Apple Programs Integrator"],
 
-    answer: 2
+        answer: "Application Programing Interface"
     },
     {
-    question: "Which of the following is not one of the fundamental programming languages?",
-    choice1: "HTML",
-    choice2: "CSS",
-    choice3: "Python",
-    choice4: "JavaScript",
+        question: "Which of the following is not one of the fundamental programming languages?",
+        choices: ["HTML",
+         "CSS",
+        "Python",
+         "JavaScript"],
 
-    answer: 3
+        answer: "Python"
     },
     {
-    question: "How do you write 'Hello!' in an alert box?",
-    choice1: "msgBox('Hello!')",
-    choice2: "msg('Hello!')",
-    choice3: "alertBox('Hello!')",
-    choice4: "aler('Hello!')",
+        question: "How do you write 'Hello!' in an alert box?",
+        choices: ["msgBox('Hello!')",
+         "msg('Hello!')",
+         "alertBox('Hello!')",
+         "aler('Hello!')"],
 
-    answer: 4
+        answer: "aler('Hello!')"
     }
 
 ]
@@ -82,57 +77,58 @@ var userNameInput;
 var questionHeader = document.getElementById("questions");
 var answerChoices = document.getElementById("answers");
 var submitBtn = document.getElementById("submitBtn");
+var restartBtn = document.querySelector("#restartBtn");
+var clearBtn = document.querySelector("#clearBtn");
 
 var secondsLeft = 60;
 var secondsElapsed = 0;
 var interval;
 
-var questionNumber = -1;
-var answer;
+var questionNumber = 0;
+
 
 // Need help here.
 // getTimePreferences ();
 
 function getFormattedSeconds() {
     var secondsLeft = (totalSeconds - secondsElapsed) % 60;
-  
-    var formattedSeconds;
-  
-    if (secondsLeft < 10) {
-      formattedSeconds = "0" + secondsLeft;
-    } else {
-      formattedSeconds = secondsLeft;
-    }
-  
-    return formattedSeconds;
-  }
 
-  function setTime () {
-    var countdown = setInterval(function() {
+    var formattedSeconds;
+
+    if (secondsLeft < 10) {
+        formattedSeconds = "0" + secondsLeft;
+    } else {
+        formattedSeconds = secondsLeft;
+    }
+
+    return formattedSeconds;
+}
+
+function setTime() {
+    var countdown = setInterval(function () {
         secondsLeft--;
         timerEl.textContent = "Time: " + secondsLeft;
 
-        if(secondsLeft === 0 ||questionNumber === 0 ) {
+        if (secondsLeft === 0 || questionNumber === 0) {
             clearInterval(countdown);
             setTimeout(displayScore, 500);
         }
     }, 1000);
 }
 
-function startTimer () {
+function startTimer() {
     document.getElementById("home").classList.add("d-none");
     document.getElementById("quiz").classList.remove("d-none");
 
-    setTime ();
-// Here's where I'm having an issue.
+    setTime();
+    // Here's where I'm having an issue.
     makeQuestions();
 }
 
 function makeQuestions() {
-    questionNumber++;
     answer = questions[questionNumber].answer
 
-    questionHeader.textContent = questions[questionNumber].title;
+    questionHeader.textContent = questions[questionNumber].question;
     answerChoices.innerHTML = "";
 
     var choices = questions[questionNumber].choices;
@@ -141,18 +137,18 @@ function makeQuestions() {
         var nextChoice = document.createElement("button");
 
         nextChoice.textContent = choices[i]
-        answerBtn = answerChoices.appendChild(nextChoice).setAttribute("class");
+       answerChoices.appendChild(nextChoice).setAttribute("class", "btn");
     }
 }
 
 function displayScore() {
-    document.getElementById("quiz").classList.add("d-none");
+    //document.getElementById("quiz").classList.add("d-none");
     document.getElementById("submitBtn").classList.remove("d-none");
     userScoreEL.textContent = "FINAL SCORE: " + secondsLeft + ".";
 }
 
 startBtn.addEventListener("click", startTimer);
-submitBtn.addEventListener("click", function(event) {
+submitBtn.addEventListener("click", function (event) {
     event.stopPropagation();
     addScoreEl();
 
@@ -174,7 +170,7 @@ function addScore() {
 
 function hideFeedback() {
     var pElement = document.getElementsByClassName("feedback")[0]
-    pElement.style.display="none"
+    pElement.style.display = "none"
 }
 
 function showFeedback() {
@@ -183,18 +179,21 @@ function showFeedback() {
 }
 
 answerChoices.addEventListener("click", function (event) {
+    var answer = questions[questionNumber].answer;
     var pElement = document.getElementsByClassName("feedback")[0]
+    console.log(answer);
 
     if (answer === event.target.textContent) {
         pElement.innerHTML = "Correct!";
-        setTimeout(hideFeedback,1225);
-        showFeedback();
+        setTimeout(hideFeedback, 1225);
+       // showFeedback();
     }
     else {
         pElement.innerHTML = "Incorrect.";
-        setTimeout(hideFeedback,1225);
+        setTimeout(hideFeedback, 1225);
         secondsLeft = secondsLeft - 20;
         showFeedback();
-        }
-        makeQuestions();
+    }
+    questionNumber++;
+    makeQuestions();
 });
