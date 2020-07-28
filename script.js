@@ -8,6 +8,7 @@ var userNameInput;
 var questionHeader = document.getElementById("questions");
 var answerChoices = document.getElementById("answers");
 
+// Question and answer portion.
 let questions = [
     {
     question: "In what HTML element do you put JavaScript?",
@@ -23,7 +24,7 @@ let questions = [
     choice1: "<script href=''>",
     choice2: "<script src=''>",
     choice3: "<script name=''>",
-    choice4: "<script call=''>",
+    choice4: "<script file=''>",
 
     answer: 2
     },
@@ -44,7 +45,6 @@ let questions = [
     choice4: "Confirm",
     
     answer: 1
-    
     },
     {
     question: "Which of the following is a type of loop?",
@@ -74,8 +74,13 @@ let questions = [
     answer: 3
     },
     {
-    question: "What is console.log mainly used for?",
-    choice1: "To help",
+    question: "How do you write 'Hello!' in an alert box?",
+    choice1: "msgBox('Hello!')",
+    choice2: "msg('Hello!')",
+    choice3: "alertBox('Hello!')",
+    choice4: "aler('Hello!')",
+
+    answer: 4
     }
 
 ]
