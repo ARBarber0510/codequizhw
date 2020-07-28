@@ -90,7 +90,7 @@ var interval;
 var questionNumber = -1;
 var answer;
 
-
+// Need help here.
 // getTimePreferences ();
 
 function getFormattedSeconds() {
