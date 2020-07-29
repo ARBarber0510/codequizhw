@@ -132,12 +132,20 @@ function callQuestions() {
 
         nextChoice.textContent = choices[i]
         answerBtn =  answerChoices.appendChild(nextChoice).setAttribute("class", "btn btn-info btn-sm");
+
+        if (answer === true) {
+            
+        }
     }
 }
-// function endGame () {
-//     prompt ("Quiz Done. Your Score: " + );
+function endGame () {
+    if (questions.length === 0 || questionCounter >= maxQuestions) {
+        prompt ("Quize Done! Your score:" + (score * maxQuestions));
+    }
 
-// }
+
+
+}
 function displayScore() {
     document.getElementById("quiz").classList.add("d-none");
     document.getElementById("submitBtn").classList.remove("d-none");
@@ -196,7 +204,7 @@ answerChoices.addEventListener("click", function (event) {
         questionNumber++;
         callQuestions();
     }
-    else {
-        alert ("Quiz Done.");
-    }
+    // else {
+    //     alert ("Quiz Done.");
+    // }
 });
