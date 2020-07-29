@@ -70,6 +70,7 @@ let questions = [
 
 ]
 let questionCounter = 0;
+var score = document.getElementById("score");
 var secondsDisplay = document.querySelector("#seconds");
 var timerEl = document.querySelector(".timer");
 var addScoreEl = document.querySelector("#add-score");
@@ -83,7 +84,6 @@ var clearBtn = document.querySelector("button.clearBtn");
 
 var secondsLeft = 60;
 var answer;
-let score = 0;
 var questionNumber = 0;
 
 //Constants
@@ -132,11 +132,12 @@ function callQuestions() {
 
         nextChoice.textContent = choices[i]
         answerBtn =  answerChoices.appendChild(nextChoice).setAttribute("class", "btn btn-info btn-sm");
-
-        if (answer === true) {
-            
-        }
     }
+}
+
+function incrementScore (num) {
+    score += num;
+    newScore.innerText = score;
 }
 function endGame () {
     if (questions.length === 0 || questionCounter >= maxQuestions) {
@@ -204,7 +205,7 @@ answerChoices.addEventListener("click", function (event) {
         questionNumber++;
         callQuestions();
     }
-    // else {
-    //     alert ("Quiz Done.");
-    // }
+    else {
+        alert ("Quiz Done.");
+    }
 });

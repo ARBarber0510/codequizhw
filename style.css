@@ -10,6 +10,9 @@ body {
 .timer {
     float: right;
 }
+#score {
+    float: right;
+}
 
 .container {
     border-style: solid;
