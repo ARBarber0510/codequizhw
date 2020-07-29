@@ -81,17 +81,19 @@ var restartBtn = document.querySelector("button.restartBtn");
 var clearBtn = document.querySelector("button.clearBtn");
 
 var secondsLeft = 60;
-var interval;
+var answer;
 
 var questionNumber = 0;
 
+
+
 function setTimer() {
-    var timerInterval = setInterval(function(){
+    var countdown = setInterval(function(){
         secondsLeft--;
         timerEl.textContent = "Time: " + secondsLeft;
 
-        if (secondsLeft === 0) {
-        clearInterval(timerInterval);
+        if (secondsLeft === 0 || questionNumber === questions.length) {
+        clearInterval(countdown);
         setTimeout(displayScore, 500);
         }
     }, 1000);
@@ -107,7 +109,8 @@ function startTimer() {
 }
 
 function makeQuestions() {
-    answer = questions[questionNumber].answer;
+    //Issue here.
+    answer = questions[questionNumber].answer
 
     questionHeader.textContent = questions[questionNumber].question;
     answerChoices.innerHTML = "";
@@ -118,13 +121,14 @@ function makeQuestions() {
         var nextChoice = document.createElement("button");
 
         nextChoice.textContent = choices[i]
-       answerChoices.appendChild(nextChoice).setAttribute("class", "btn");
+        answerBtn =  answerChoices.appendChild(nextChoice).setAttribute("class", "btn btn-info btn-sm startBtn");
     }
 }
 
 function displayScore() {
+    document.getElementById("quiz").classList.add("d-none");
     document.getElementById("submitBtn").classList.remove("d-none");
-    userScoreEL.textContent = "FINAL SCORE: " + secondsLeft + ".";
+    userScoreEL.textContent = "SCORE: " + secondsLeft + ".";
 }
 
 startBtn.addEventListener("click", startTimer);
