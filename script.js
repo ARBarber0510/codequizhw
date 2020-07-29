@@ -107,7 +107,7 @@ function startTimer() {
 }
 
 function makeQuestions() {
-    answer = questions[questionNumber].answer
+    answer = questions[questionNumber].answer;
 
     questionHeader.textContent = questions[questionNumber].question;
     answerChoices.innerHTML = "";
@@ -123,17 +123,17 @@ function makeQuestions() {
 }
 
 function displayScore() {
-    //document.getElementById("quiz").classList.add("d-none");
     document.getElementById("submitBtn").classList.remove("d-none");
     userScoreEL.textContent = "FINAL SCORE: " + secondsLeft + ".";
 }
 
 startBtn.addEventListener("click", startTimer);
 submitBtn.addEventListener("click", function (event) {
+    if (seconds === 0) {
+        window.location.href = "./highscores.html"
+    }
     event.stopPropagation();
     addScoreEl();
-
-    window.location.href = "highscores.html"
 });
 
 function addScore() {
