@@ -69,6 +69,7 @@ let questions = [
     }
 
 ]
+let questionCounter = 0;
 var secondsDisplay = document.querySelector("#seconds");
 var timerEl = document.querySelector(".timer");
 var addScoreEl = document.querySelector("#add-score");
@@ -82,10 +83,19 @@ var clearBtn = document.querySelector("button.clearBtn");
 
 var secondsLeft = 60;
 var answer;
-
+let score = 0;
 var questionNumber = 0;
 
+//Constants
+const maxQuestions = 7;
+const correctBonus = 10;
 
+function startQuiz() {
+    questionCounter = 0;
+    score = 0;
+};
+
+startQuiz();
 
 function setTimer() {
     var countdown = setInterval(function(){
@@ -105,13 +115,13 @@ function startTimer() {
 
     setTimer();
     
-    makeQuestions();
+    callQuestions();
 }
 
-function makeQuestions() {
+function callQuestions() {
     //Issue here.
     answer = questions[questionNumber].answer
-
+    console.log(questionNumber);
     questionHeader.textContent = questions[questionNumber].question;
     answerChoices.innerHTML = "";
 
@@ -121,20 +131,24 @@ function makeQuestions() {
         var nextChoice = document.createElement("button");
 
         nextChoice.textContent = choices[i]
-        answerBtn =  answerChoices.appendChild(nextChoice).setAttribute("class", "btn btn-info btn-sm startBtn");
+        answerBtn =  answerChoices.appendChild(nextChoice).setAttribute("class", "btn btn-info btn-sm");
     }
 }
+// function endGame () {
+//     prompt ("Quiz Done. Your Score: " + );
 
+// }
 function displayScore() {
     document.getElementById("quiz").classList.add("d-none");
     document.getElementById("submitBtn").classList.remove("d-none");
     userScoreEL.textContent = "SCORE: " + secondsLeft + ".";
 }
 
+//Issue here.
 startBtn.addEventListener("click", startTimer);
 submitBtn.addEventListener("click", function (event) {
     if (seconds === 0) {
-        window.location.href = "highscores.html"
+        window.location = "highscores.html"
     }
     event.stopPropagation();
     addScoreEl();
@@ -178,6 +192,11 @@ answerChoices.addEventListener("click", function (event) {
         secondsLeft = secondsLeft - 20;
         showFeedback();
     }
-    questionNumber++;
-    makeQuestions();
+    if (questionNumber < questions.length - 1) {
+        questionNumber++;
+        callQuestions();
+    }
+    else {
+        alert ("Quiz Done.");
+    }
 });
