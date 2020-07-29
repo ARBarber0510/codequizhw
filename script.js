@@ -77,8 +77,8 @@ var userNameInput;
 var questionHeader = document.getElementById("questions");
 var answerChoices = document.getElementById("answers");
 var submitBtn = document.getElementById("submitBtn");
-var restartBtn = document.querySelector("#restartBtn");
-var clearBtn = document.querySelector("#clearBtn");
+var restartBtn = document.querySelector("button.restartBtn");
+var clearBtn = document.querySelector("button.clearBtn");
 
 var secondsLeft = 60;
 var interval;
@@ -130,7 +130,7 @@ function displayScore() {
 startBtn.addEventListener("click", startTimer);
 submitBtn.addEventListener("click", function (event) {
     if (seconds === 0) {
-        window.location.href = "./highscores.html"
+        window.location.href = "highscores.html"
     }
     event.stopPropagation();
     addScoreEl();
@@ -160,14 +160,13 @@ function showFeedback() {
 }
 
 answerChoices.addEventListener("click", function (event) {
-    var answer = questions[questionNumber].answer;
+    var answer = questions[questionNumber].answer
     var pElement = document.getElementsByClassName("feedback")[0]
     console.log(answer);
 
     if (answer === event.target.textContent) {
         pElement.innerHTML = "Correct!";
         setTimeout(hideFeedback, 1225);
-       // showFeedback();
     }
     else {
         pElement.innerHTML = "Incorrect.";

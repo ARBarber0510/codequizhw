@@ -2,10 +2,23 @@
     box-sizing: border-box;
 }
 
+body {
+   color: #333; 
+   background-color: #eee;
+}
+
 .timer {
     float: right;
 }
 
 .container {
+    border-style: solid;
+    border-width: 2px;
+}
+h1 {
+    color: #663399;
+}
 
+h2, h3 {
+    color: #40e0d0;
 }
